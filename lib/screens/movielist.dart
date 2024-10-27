@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart'; // Importa a biblioteca para usar widgets do Material Design
 import '../model/movie.dart'; // Importa o modelo Movie que define a estrutura de dados dos filmes
 import '../services/firebase_service.dart';
-import '../util/dbhelper.dart'; // Importa o helper para manipulação do banco de dados
+// Importa o helper para manipulação do banco de dados
 import 'add_movie.dart'; // Importa tela para adicionar filmes
 import 'movie_details.dart'; // Importa tela para mostrar detalhes de um filme
 
