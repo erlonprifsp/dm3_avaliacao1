@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import '../model/movie.dart';
 import '../util/dbhelper.dart';
+import '../services/firebase_service.dart';
+
 
 class MovieDetails extends StatelessWidget {
   final Movie movie;
   final DbHelper helper = DbHelper();
+  final FirebaseService service = FirebaseService();
 
   MovieDetails({super.key, required this.movie});
 
@@ -82,9 +85,18 @@ class MovieDetails extends StatelessWidget {
     );
   }
 
+  /*
   void _deleteMovie(BuildContext context) async {
     await helper.deleteTodo(movie.id!);
     Navigator.pop(context); // Fechar o dialogo
     Navigator.pop(context, true); // Voltar para a tela anterior com resultado true
+  }
+
+   */
+
+  void _deleteMovie(BuildContext context) async {
+    await service.deleteMovie(movie.id.toString());
+    Navigator.pop(context); // Fechar o diálogo
+    Navigator.pop(context, true); // Voltar para a tela anterior
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart'; // Importa a biblioteca para usar widgets do Material Design
 import '../model/movie.dart'; // Importa o modelo Movie que define a estrutura de dados dos filmes
+import '../services/firebase_service.dart';
 import '../util/dbhelper.dart'; // Importa o helper para manipulação do banco de dados
 import 'add_movie.dart'; // Importa tela para adicionar filmes
 import 'movie_details.dart'; // Importa tela para mostrar detalhes de um filme
@@ -16,10 +17,11 @@ class MovieList extends StatefulWidget {
 
 class MovieListState extends State<MovieList> {
   // classe que define o estado do widget MovieList
-  DbHelper helper =
-      DbHelper(); // Instância da classe DbHelper para interagir com o banco de dados
-  List<Movie>?
-      movies; // Lista que armazena os itens (filmes) carregados do banco de dados. Inicialmente nula
+  // DbHelper helper = DbHelper(); // Instância da classe DbHelper para interagir com o banco de dados
+
+  final FirebaseService service = FirebaseService();
+
+  List<Movie>? movies; // Lista que armazena os itens (filmes) carregados do banco de dados. Inicialmente nula
   int count = 0; // Contador para o número de itens na lista movies
 
   @override
@@ -61,6 +63,19 @@ class MovieListState extends State<MovieList> {
     );
   }
 
+  void getData() async {
+    // Obtém a lista de filmes do Firebase
+    List<Movie> fetchedMovies = await service.getMovies();
+
+    setState(() {
+      // Atualiza a lista de filmes e a contagem
+      movies = fetchedMovies; // Armazena os filmes obtidos
+      count = movies?.length ?? 0; // Atualiza o contador
+    });
+  }
+
+
+  /*
   void getData() {
     // Método que carrega os dados do banco de dados.
     var dbFuture = helper.initializeDb(); // Inicializa o banco de dados.
@@ -84,6 +99,7 @@ class MovieListState extends State<MovieList> {
       });
     });
   }
+  */
 
   ListView movieListItems() {
     // Método que cria uma lista de itens usando ListView.builder

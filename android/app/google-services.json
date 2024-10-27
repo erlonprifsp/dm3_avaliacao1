@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "556453557572",
+    "firebase_url": "https://ifspdm3avaliacao-default-rtdb.firebaseio.com",
+    "project_id": "ifspdm3avaliacao",
+    "storage_bucket": "ifspdm3avaliacao.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:556453557572:android:2e89916cdfcf9c286c1311",
+        "android_client_info": {
+          "package_name": "br.edu.ifsp.scl.aluno.erlonrodrigues.dm3_avaliacao1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxApYE882chlms2xtcrYfBN3WvGWNyY28"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

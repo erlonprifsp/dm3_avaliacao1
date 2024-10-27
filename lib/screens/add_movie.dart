@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import '../model/movie.dart';
 import '../util/dbhelper.dart';
+import '../services/firebase_service.dart';
 
 class AddMovie extends StatefulWidget {
   const AddMovie({super.key});
+
 
   @override
   _AddMovieState createState() => _AddMovieState();
@@ -16,6 +18,8 @@ class _AddMovieState extends State<AddMovie> {
   final TextEditingController _dateController = TextEditingController();
   int _priority = 1;
   DbHelper helper = DbHelper();
+  final FirebaseService service = FirebaseService();
+
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +88,18 @@ class _AddMovieState extends State<AddMovie> {
   }
 
   void _saveMovie() async {
+    Movie newMovie = Movie(
+      _titleController.text,
+      _priority,
+      _dateController.text,
+      _descriptionController.text,
+    );
+    await service.insertMovie(newMovie);
+    Navigator.pop(context, true);
+  }
+
+  /*
+  void _saveMovie() async {
     Movie newTodo = Movie(
       _titleController.text,
       _priority,
@@ -93,4 +109,6 @@ class _AddMovieState extends State<AddMovie> {
     await helper.insertMovie(newTodo);
     Navigator.pop(context, true);
   }
+  */
+
 }
