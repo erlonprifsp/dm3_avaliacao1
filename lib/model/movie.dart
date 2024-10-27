@@ -63,9 +63,11 @@ class Movie {
 
   // Construtor nomeado que cria um objeto Movie a partir de um Map
   Movie.fromMap(dynamic o)
-      : _id = o["id"], // Inicializa o id com o valor do Map
+      // : _id = o["id"], // Inicializa o id com o valor do Map
+      : _id = o["id"] is int ? o["id"] : int.tryParse(o["id"].toString()),
         _title = o["title"], // Inicializa o título com o valor do Map
         _description = o["description"], // Inicializa a descrição com o valor do Map
-        _priority = o["priority"], // Inicializa a prioridade com o valor do Map
+        // _priority = o["priority"], // Inicializa a prioridade com o valor do Map
+        _priority = o["priority"] is int ? o["priority"] : int.tryParse(o["priority"].toString()) ?? 0,
         _date = o["date"]; // Inicializa a data com o valor do Map
 }

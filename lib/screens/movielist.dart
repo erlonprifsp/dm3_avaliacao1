@@ -25,6 +25,13 @@ class MovieListState extends State<MovieList> {
   int count = 0; // Contador para o número de itens na lista movies
 
   @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+
+  @override
   Widget build(BuildContext context) {
     // Método que constrói a interface do usuário
     if (movies == null) {
@@ -66,6 +73,11 @@ class MovieListState extends State<MovieList> {
   void getData() async {
     // Obtém a lista de filmes do Firebase
     List<Movie> fetchedMovies = await service.getMovies();
+    print("Filmes carregados: ${fetchedMovies.length}"); // Verifica a quantidade de filmes carregados
+    for (var movie in fetchedMovies) {
+      print("Título: ${movie.title}, Prioridade: ${movie.priority}"); // Mostra detalhes de cada filme
+    }
+
 
     setState(() {
       // Atualiza a lista de filmes e a contagem
