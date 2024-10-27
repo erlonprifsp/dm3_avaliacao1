@@ -78,6 +78,8 @@ class MovieListState extends State<MovieList> {
       print("ID: ${movie.id}, Título: ${movie.title}, Prioridade: ${movie.priority}"); // Mostra detalhes de cada filme
     }
 
+    // Ordena os filmes pela prioridade
+    fetchedMovies.sort((a, b) => a.priority.compareTo(b.priority));
 
     setState(() {
       // Atualiza a lista de filmes e a contagem
