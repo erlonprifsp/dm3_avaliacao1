@@ -1,7 +1,7 @@
 class Movie {
   // Atributos:
 
-  int? _id; // O id é opcional, pois o banco de dados pode não tê-lo definido ainda
+  String? _id; // O id é opcional, pois o banco de dados pode não tê-lo definido ainda
   String _title; // Título do filme, obrigatório
   String? _description; // Descrição do filme, opcional
   String _date; // Data de recomendação do filme, obrigatória
@@ -22,9 +22,14 @@ class Movie {
   String get date => _date;
   String? get description => _description;
   String get title => _title;
-  int? get id => _id;
+  String? get id => _id;
 
   // Setters...
+
+
+  set id(String? newId) { // Mudado para String?
+    _id = newId; // Define o ID do filme
+  }
 
   set title(String newTitle) {
     if (newTitle.length <= 255) { // Valida que o título tem no máximo 255 caracteres

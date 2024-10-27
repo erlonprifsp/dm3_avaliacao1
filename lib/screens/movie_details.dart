@@ -95,8 +95,13 @@ class MovieDetails extends StatelessWidget {
    */
 
   void _deleteMovie(BuildContext context) async {
-    await service.deleteMovie(movie.id.toString());
-    Navigator.pop(context); // Fechar o diálogo
-    Navigator.pop(context, true); // Voltar para a tela anterior
+    if (movie.id != null) {
+      await service.deleteMovie(movie.id.toString());
+      Navigator.pop(context); // Fechar o diálogo
+      Navigator.pop(context, true); // Voltar para a tela anterior
+    } else {
+      // Exibir uma mensagem de erro, caso o ID seja nulo
+      print("Erro: ID do filme é nulo.");
+    }
   }
 }

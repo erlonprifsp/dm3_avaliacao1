@@ -75,7 +75,7 @@ class MovieListState extends State<MovieList> {
     List<Movie> fetchedMovies = await service.getMovies();
     print("Filmes carregados: ${fetchedMovies.length}"); // Verifica a quantidade de filmes carregados
     for (var movie in fetchedMovies) {
-      print("Título: ${movie.title}, Prioridade: ${movie.priority}"); // Mostra detalhes de cada filme
+      print("ID: ${movie.id}, Título: ${movie.title}, Prioridade: ${movie.priority}"); // Mostra detalhes de cada filme
     }
 
 

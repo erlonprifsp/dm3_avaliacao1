@@ -39,22 +39,23 @@ class FirebaseService {
     List<Movie> movies = [];
 
     if (event.snapshot.value != null) {
-      Map<dynamic, dynamic> values =
-      event.snapshot.value as Map<dynamic, dynamic>;
+      Map<dynamic, dynamic> values = event.snapshot.value as Map<dynamic, dynamic>;
 
       values.forEach((key, value) {
-        movies.add(Movie.fromMap({
-          'id': key,
-          'title': value['title'],
-          'description': value['description'],
-          'priority': value['priority'],
-          'date': value['date'],
-        }));
+        // Aqui, o 'key' é o ID gerado pelo Firebase
+        movies.add(Movie.withId(
+          key, // Passando o ID para o construtor
+          value['title'],
+          value['priority'],
+          value['date'],
+          value['description'],
+        ));
       });
     }
 
     return movies;
   }
+
 
   // Atualizar filme
   Future<void> updateMovie(Movie movie) async {
