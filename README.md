@@ -99,5 +99,8 @@ Comando para baixar e acessar localmente a resolução da atividade avaliativa 2
 git clone https://github.com/erlonprifsp/dm3_avaliacao1.git
 cd dm3_avaliacao1
 ```
+Vídeo demonstrativo do aplicativo desenvolvido em Flutter com operações de inclusão e deleção dos dados armazenados no **Firebase** utilizando **Realtime Database**:
+
+[41495b90-5665-4ff4-b515-a6490651cd9d.webm](https://github.com/user-attachments/assets/8cff7063-c87b-4816-a9d1-bbb100d18865)
 
 ---
